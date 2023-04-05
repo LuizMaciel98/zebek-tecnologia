@@ -24,8 +24,12 @@
     "@capacitor/haptics": "4.1.0",
     "@capacitor/keyboard": "4.1.1",
     "@capacitor/status-bar": "4.1.1",
+    "@ionic-native/clipboard": "^5.36.0",
     "@ionic/angular": "^7.0.0",
+    "@thiagoprz/ionic-input-mask": "^0.0.5",
+    "copy-to-clipboard": "^3.3.3",
     "ionicons": "^7.0.0",
+    "ngx-mask": "^15.1.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

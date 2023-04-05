@@ -1,0 +1,86 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Descobrir valor inicial após aumento</ion-card-title>
+    <ion-card-subtitle>Fórmula de Porcentagem para descobrir o valor inicial após um aumento percentual:</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <form (ngSubmit)="calculate()" [formGroup]="calculation">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-input 
+                label = "Tenho um valor que aumentou: "
+                required = true
+                type = "text" 
+                placeholder = "10,00%" 
+                formControlName = "percentage" 
+                [(ngModel)] = "percentageWithSimbol" 
+                (ionChange) = "maskPercentage($event)"
+                fill="outline">
+              </ion-input>
+              <ion-note slot="error" *ngIf="(percentage.dirty || percentage.touched) && percentage.errors">Porcentagem inválida</ion-note>
+            </ion-col>
+            
+            <ion-col>
+              <ion-input 
+                label = "E passou para: "
+                required=true 
+                type="text" 
+                placeholder="100" 
+                formControlName="finalNumber"
+                fill="outline">
+              </ion-input>
+              <ion-note slot="error" *ngIf="(finalNumber.dirty || finalNumber.touched) && finalNumber.errors">Número inválido</ion-note>
+
+              <!-- <ion-input 
+                label = "Sobre o valor: "
+                required=true 
+                type="text" 
+                placeholder="100" 
+                formControlName="finalNumber"
+                fill="outline">
+              </ion-input>
+              <ion-note slot="error" *ngIf="(finalNumber.dirty || finalNumber.touched) && finalNumber.errors">Número inválido</ion-note> -->
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button [disabled]="!calculation.valid" fill="outline" type="submit">Calcular</ion-button> 
+    
+              <ion-button [disabled]="!result" fill="outline" (click)="copyString()">
+                {{result}}
+                <ion-icon slot="end" name="copy"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-accordion-group>
+                <ion-accordion value="first">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Passo a Passo</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    Primeiro Conteúdo
+                  </div>
+                </ion-accordion>
+              </ion-accordion-group>
+            </ion-col>
+            <ion-col>
+              <ion-accordion-group>
+                <ion-accordion value="first">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Fórmula excel</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    Primeiro Conteúdo
+                  </div>
+                </ion-accordion>
+              </ion-accordion-group>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </form>
+  </ion-card-content>
+</ion-card>
