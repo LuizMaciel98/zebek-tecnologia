@@ -1,0 +1,84 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Porcentagem de uma quantidade em relação a outra</ion-card-title>
+    <ion-card-subtitle>Fórmula de Porcentagem para descobrir a porcentagem de uma quantidade em relação a outra:</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <form (ngSubmit)="calculate()" [formGroup]="calculation">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-input 
+                label = "O valor: "
+                required=true 
+                type="text" 
+                placeholder="100" 
+                formControlName="initialNumber"
+                fill="outline">
+              </ion-input>
+              <ion-note slot="error" *ngIf="(initialNumber.dirty || initialNumber.touched) && initialNumber.errors">Número inválido</ion-note>
+            </ion-col>
+            
+            <ion-col>
+              <ion-input 
+                label = "é qual porcentagem de: "
+                required=true 
+                type="text" 
+                placeholder="100" 
+                formControlName="finalNumber"
+                fill="outline">
+              </ion-input>
+              <ion-note slot="error" *ngIf="(finalNumber.dirty || finalNumber.touched) && finalNumber.errors">Número inválido</ion-note>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button [disabled]="!calculation.valid" fill="outline" type="submit">Calcular</ion-button> 
+    
+              <ion-button [disabled]="!result" fill="outline" (click)="copyString()">
+                {{result}}
+                <ion-icon slot="end" name="copy"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-accordion-group>
+                <ion-accordion value="first">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Passo a Passo</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <p>Para calcular a porcentagem que o valor 5000 representa em relação ao valor 17000, podemos utilizar a fórmula:</p>
+                    <br/>
+                    <p>porcentagem = (valor / valor base) x 100%</p>
+                    <br/>
+                    <p>Substituindo pelos valores que temos, temos:</p>
+                    <br/>
+                    <p>porcentagem = (5000 / 17000) x 100%</p>
+                    <p>porcentagem = 0,2941 x 100%</p>
+                    <p>porcentagem = 29,41%</p>
+                    <br/>
+                    <p>Portanto, o valor 5000 representa 29,41% do valor 17000.</p>
+                  </div>
+                </ion-accordion>
+              </ion-accordion-group>
+            </ion-col>
+            <ion-col>
+              <ion-accordion-group>
+                <ion-accordion value="first">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Fórmula excel</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    Em desenvolvimento
+                  </div>
+                </ion-accordion>
+              </ion-accordion-group>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </form>
+  </ion-card-content>
+</ion-card>

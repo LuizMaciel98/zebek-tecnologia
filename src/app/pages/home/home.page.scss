@@ -1,0 +1,27 @@
+.max-width-xl {
+    max-width: 1140px!important;
+    margin: auto;
+}
+
+@media(min-width: 768px) {
+    .mobile-header {
+        display: none;
+    }
+
+    .header {
+        display: flex;
+        background: #fff;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+@media(max-width: 768px) {
+    .mobile-header {
+        display: block;
+    }
+
+    .header {
+        display: none;
+    }
+}

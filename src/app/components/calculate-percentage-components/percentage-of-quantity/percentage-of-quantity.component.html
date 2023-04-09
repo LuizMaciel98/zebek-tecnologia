@@ -1,0 +1,86 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Porcentagem de um valor total</ion-card-title>
+    <ion-card-subtitle>Fórmula de porcentagem para descobrir uma parte de uma quantidade:</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <form (ngSubmit)="calculate()" [formGroup]="calculation">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-input 
+                label = "Quanto é: "
+                required = true
+                type = "text" 
+                placeholder = "10,00%" 
+                formControlName = "percentage" 
+                [(ngModel)] = "percentageWithSimbol" 
+                (ionChange) = "maskPercentage($event)"
+                fill="outline">
+              </ion-input>
+              <ion-note slot="error" *ngIf="(percentage.dirty || percentage.touched) && percentage.errors">Porcentagem inválida</ion-note>
+            </ion-col>
+            
+            <ion-col>
+              <ion-input 
+              label = "de: "
+              required=true 
+              type="text" 
+              placeholder="100" 
+              formControlName="calculatedNumber"
+              fill="outline">
+            </ion-input>
+            <ion-note slot="error" *ngIf="(calculatedNumber.dirty || calculatedNumber.touched) && calculatedNumber.errors">Número inválido</ion-note>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button [disabled]="!calculation.valid" fill="outline" type="submit">Calcular</ion-button> 
+    
+              <ion-button [disabled]="!result" fill="outline" (click)="copyString()">
+                {{result}}
+                <ion-icon slot="end" name="copy"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-accordion-group>
+                <ion-accordion value="first">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Passo a Passo</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <p>Para calcularmos 25% de 2000, podemos utilizar a seguinte fórmula:</p>
+                    <br/>
+                    <p>resultado = (valor x percentual) / 100</p>
+                    <br/>
+                    <p>Substituindo pelos valores que temos, temos:</p>
+                    <br/>
+                    <p>resultado = (2000 x 25) / 100</p>
+                    <!-- <br/> -->
+                    <p>resultado = 500</p>
+                    <br/>
+                    <p>Portanto, 25% de 2000 é igual a 500.</p>
+                  </div>
+                </ion-accordion>
+              </ion-accordion-group>
+            </ion-col>
+            <ion-col>
+              <ion-accordion-group>
+                <ion-accordion value="first">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Fórmula excel</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    Em desenvolvimento
+                  </div>
+                </ion-accordion>
+              </ion-accordion-group>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </form>
+  </ion-card-content>
+</ion-card>

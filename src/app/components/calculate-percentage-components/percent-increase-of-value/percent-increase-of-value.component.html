@@ -1,0 +1,85 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Descobrir o aumento percentual</ion-card-title>
+    <ion-card-subtitle>Fórmula para calcular o aumento percentual sobre dois números:</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <form (ngSubmit)="calculate()" [formGroup]="calculation">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-input 
+                label = "Um valor de: "
+                required=true 
+                type="text" 
+                placeholder="100" 
+                formControlName="initialNumber"
+                fill="outline">
+              </ion-input>
+              <ion-note slot="error" *ngIf="(initialNumber.dirty || initialNumber.touched) && initialNumber.errors">Número inválido</ion-note>
+            </ion-col>
+            
+            <ion-col>
+              <ion-input 
+                label = "que aumentou para: "
+                required=true 
+                type="text" 
+                placeholder="100" 
+                formControlName="finalNumber"
+                fill="outline">
+              </ion-input>
+              <ion-note slot="error" *ngIf="(finalNumber.dirty || finalNumber.touched) && finalNumber.errors">Número inválido</ion-note>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button [disabled]="!calculation.valid" fill="outline" type="submit">Calcular</ion-button> 
+    
+              <ion-button [disabled]="!result" fill="outline" (click)="copyString()">
+                {{result}}
+                <ion-icon slot="end" name="copy"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-accordion-group>
+                <ion-accordion value="first">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Passo a Passo</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <p>Para calcular o aumento percentual, podemos utilizar a seguinte fórmula:</p>
+                    <br/>
+                    <p>aumento percentual = (valor final - valor inicial) / valor inicial x 100%</p>
+                    <br/>
+                    <p>Substituindo pelos valores que temos, temos:</p>
+                    <br/>
+                    <p>aumento percentual = (1200 - 800) / 800 x 100%</p>
+                    <p>aumento percentual = 400 / 800 x 100%</p>
+                    <p>aumento percentual = 0,5 x 100%</p>
+                    <p>aumento percentual = 50%</p>
+                    <br/>
+                    <p>Portanto, o aumento percentual foi de 50%.</p>
+                  </div>
+                </ion-accordion>
+              </ion-accordion-group>
+            </ion-col>
+            <ion-col>
+              <ion-accordion-group>
+                <ion-accordion value="first">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Fórmula excel</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    Em desenvolvimento
+                  </div>
+                </ion-accordion>
+              </ion-accordion-group>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </form>
+  </ion-card-content>
+</ion-card>

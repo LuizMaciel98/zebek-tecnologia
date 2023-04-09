@@ -1,0 +1,39 @@
+<div class="ion-page" id="main-content">
+
+  <app-header [title]="title"></app-header>
+
+  <!-- PAGE CONTENT -->
+  <ion-content [fullscreen]="true">
+    <div class="ion-justify-content-center max-width-xl">
+      <ion-grid>
+        <ion-row>
+          <ion-col size-md="8" size-xs="12">
+            <app-percentage-of-quantity></app-percentage-of-quantity>
+            <app-quantity-as-a-percentage></app-quantity-as-a-percentage>
+            <app-percent-increase-of-value></app-percent-increase-of-value>
+            <app-percent-decrease-of-value></app-percent-decrease-of-value>
+            <app-percentage-between-two-quantities></app-percentage-between-two-quantities>
+            <app-increase-value-by-percentage></app-increase-value-by-percentage>
+            <app-decrease-value-by-percentage></app-decrease-value-by-percentage>
+            <app-initial-value-after-increase></app-initial-value-after-increase>
+            <app-initial-value-after-decrease></app-initial-value-after-decrease>
+          </ion-col>
+          <ion-col class="is-Desktop" size="4">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Calculadoras</ion-card-title>
+              </ion-card-header>
+            
+              <ion-card-content>
+                <ion-item button mode="ios">
+                  <ion-label>Calculadora porcentagem</ion-label>
+                </ion-item>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+
+</div>

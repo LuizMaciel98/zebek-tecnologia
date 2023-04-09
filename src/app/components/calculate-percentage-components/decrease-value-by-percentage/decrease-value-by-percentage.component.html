@@ -1,0 +1,96 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>Diminuição percentual</ion-card-title>
+    <ion-card-subtitle>Formula de Porcentagem para diminuir um valor em uma porcentagem:</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <form (ngSubmit)="calculate()" [formGroup]="calculation">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-input 
+                label = "Tenho um valor de: "
+                required=true 
+                type="text" 
+                placeholder="100" 
+                formControlName="calculatedNumber"
+                fill="outline">
+              </ion-input>
+              <ion-note slot="error" *ngIf="(calculatedNumber.dirty || calculatedNumber.touched) && calculatedNumber.errors">Número inválido</ion-note>
+            </ion-col>
+            
+            <ion-col>
+              <ion-input 
+                label = "e quero diminuir: "
+                required = true
+                type = "text" 
+                placeholder = "10,00%" 
+                formControlName = "percentage" 
+                [(ngModel)] = "percentageWithSimbol" 
+                (ionChange) = "maskPercentage($event)"
+                fill="outline">
+              </ion-input>
+              <ion-note slot="error" *ngIf="(percentage.dirty || percentage.touched) && percentage.errors">Porcentagem inválida</ion-note>
+              <!-- <ion-input 
+                label = "Sobre o valor: "
+                required=true 
+                type="text" 
+                placeholder="100" 
+                formControlName="finalNumber"
+                fill="outline">
+              </ion-input>
+              <ion-note slot="error" *ngIf="(finalNumber.dirty || finalNumber.touched) && finalNumber.errors">Número inválido</ion-note> -->
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button [disabled]="!calculation.valid" fill="outline" type="submit">Calcular</ion-button> 
+    
+              <ion-button [disabled]="!result" fill="outline" (click)="copyString()">
+                {{result}}
+                <ion-icon slot="end" name="copy"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-accordion-group>
+                <ion-accordion value="first">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Passo a Passo</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <p>Para calcular o resultado da diminuição de 17% em relação ao valor inicial de 19000, podemos utilizar a seguinte fórmula:</p>
+                    <br/>
+                    <p>resultado = valor inicial - (percentual de diminuição / 100%) x valor inicial</p>
+                    <br/>
+                    <p>Substituindo pelos valores que temos, temos:</p>
+                    <br/>
+                    <p>resultado = 19000 - (17 / 100%) x 19000</p>
+                    <p>resultado = 19000 - 0,17 x 19000</p>
+                    <p>resultado = 19000 - 3230</p>
+                    <p>resultado = 15770</p>
+                    <br/>
+                    <p>Portanto, o resultado após a diminuição de 17% em relação ao valor inicial de 19000 é 15770.</p>
+                  </div>
+                </ion-accordion>
+              </ion-accordion-group>
+            </ion-col>
+            <ion-col>
+              <ion-accordion-group>
+                <ion-accordion value="first">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Fórmula excel</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    Em desenvolvimento
+                  </div>
+                </ion-accordion>
+              </ion-accordion-group>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </form>
+  </ion-card-content>
+</ion-card>
