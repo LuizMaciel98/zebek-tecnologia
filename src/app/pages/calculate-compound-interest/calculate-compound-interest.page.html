@@ -1,0 +1,92 @@
+<div class="ion-page" id="main-content">
+
+  <app-header [title]="title"></app-header>
+
+  <!-- PAGE CONTENT -->
+  <ion-content [fullscreen]="true">
+    <div class="ion-justify-content-center max-width-xl">
+      <ion-grid>
+        <ion-row>
+          <ion-col size-md="8" size-xs="12">
+            
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Calculadora de Juros Compostos</ion-card-title>
+              </ion-card-header>
+            
+              <ion-card-content>
+
+            
+                <form>
+                  <ion-row>
+                    <ion-col>
+                      <ion-item lines="full">
+                        <ion-label position="floating">Valor Inicial</ion-label>
+                        <ion-input type="number" required></ion-input>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col>
+                      <ion-item lines="full">
+                        <ion-label position="floating">Valor Mensal (Opcional)</ion-label>
+                        <ion-input type="number"></ion-input>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row>
+                    <ion-col>
+                      <ion-item lines="full">
+                        <ion-label position="floating">Taxa de juros (%)</ion-label>
+                        <ion-input type="number"></ion-input>
+                      </ion-item>
+                    </ion-col>
+
+                    <ion-col>
+                      <ion-item>
+                        <ion-label position="floating">Implicação dos juros:</ion-label>
+                        <ion-select interface="popover" value="annually">
+                          <ion-select-option value="annually">Anual</ion-select-option>
+                          <ion-select-option value="monthly">Mensal</ion-select-option>
+                          <ion-select-option value="daily">Diario</ion-select-option>
+                        </ion-select>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row>
+                    <ion-col>
+                      <ion-item lines="full">
+                        <ion-label position="floating">Período em:</ion-label>
+                        <ion-input type="number"></ion-input>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col>
+                      <ion-item>
+                        <ion-label position="floating">Intervalo:</ion-label>
+                        <ion-select interface="popover" placeholder="Período em..." value="years">
+                          <ion-select-option value="years">Anos</ion-select-option>
+                          <ion-select-option value="months">Meses</ion-select-option>
+                          <ion-select-option value="days">Dias</ion-select-option>
+                        </ion-select>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      <ion-button class="mobile-button" color="primary">Calcular</ion-button>
+                      <ion-button class="mobile-button" fill="clear" color="medium">Limpar</ion-button>
+                    </ion-col>
+                  </ion-row>
+                </form>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col class="is-Desktop" size="4">
+            <app-side-menu [title]="sideMenuTitle" [relatedPages]="sideMenuRelatedPages"></app-side-menu>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+
+</div>

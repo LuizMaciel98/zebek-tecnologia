@@ -1,0 +1,65 @@
+<div class="ion-page" id="main-content">
+
+  <app-header [title]="title"></app-header>
+
+  <!-- PAGE CONTENT -->
+  <ion-content [fullscreen]="true">
+    <div class="ion-justify-content-center max-width-xl">
+      <ion-grid>
+        <ion-row>
+          <ion-col size-md="8" size-xs="12">
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Meu cálculo</ion-card-title>
+              </ion-card-header>
+            
+              <ion-card-content>
+
+                VALOR INICIAL
+
+                VALOR MENSAL
+  
+                TAXA DE JUROS 
+  
+                PERIODO EM 
+
+              </ion-card-content>
+            </ion-card>
+
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Resultado</ion-card-title>
+              </ion-card-header>
+            
+              <ion-card-content>
+
+                VALOR TOTAL FINAL
+
+                VALOR TOTAL INVESTIDO
+  
+                TOTAL EM JUROS
+
+              </ion-card-content>
+            </ion-card>
+
+            <ion-card>
+              <ion-card-header>
+                <ion-card-title>Gráfico e Tabelas</ion-card-title>
+              </ion-card-header>
+
+              <ion-card-content>
+                
+                GRAFICO E TABELAS
+
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          <ion-col class="is-Desktop" size="4">
+            <app-side-menu [title]="sideMenuTitle" [relatedPages]="sideMenuRelatedPages"></app-side-menu>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+
+</div>

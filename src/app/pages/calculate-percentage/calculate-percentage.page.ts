@@ -14,6 +14,7 @@ import { InitialValueAfterIncreaseComponent } from '../../components/calculate-p
 import { InitialValueAfterDecreaseComponent } from '../../components/calculate-percentage-components/initial-value-after-decrease/initial-value-after-decrease.component';
 
 import { SharedComponentsModule } from '../../components/shared-components.module';
+import { CommonNavigationService } from 'src/app/services/commonNavigation.service';
 
 @Component({
     selector: 'app-calculate-percentage',
@@ -35,7 +36,7 @@ import { SharedComponentsModule } from '../../components/shared-components.modul
         SharedComponentsModule,
     ],
     providers: [
-        
+        CommonNavigationService
     ]
 
 })
@@ -43,9 +44,16 @@ export class CalculatePercentagePage implements OnInit {
 
     title: string = 'Calculadora de Porcentagem';
 
-    constructor() { }
+    sideMenuTitle: string = 'Calculadoras';
 
+    sideMenuRelatedPages: any = this.commonNavigation.getCalculatorsRelatedPages().pages;
+
+    constructor(private commonNavigation: CommonNavigationService) {
+    }
+    
     ngOnInit() {
+        console.log(this.sideMenuRelatedPages);
+        console.log(this.sideMenuRelatedPages[0]);
 
     }
 

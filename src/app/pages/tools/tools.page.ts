@@ -5,15 +5,15 @@ import { IonicModule } from '@ionic/angular';
 import { SharedComponentsModule } from 'src/app/components/shared-components.module';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.page.html',
-  styleUrls: ['./about.page.scss'],
+  selector: 'app-tools',
+  templateUrl: './tools.page.html',
+  styleUrls: ['./tools.page.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule, SharedComponentsModule]
 })
-export class AboutPage implements OnInit {
+export class ToolsPage implements OnInit {
 
-  title: string = 'Sobre';
+  title: string = 'Ferramentas';
 
   constructor() { }
 

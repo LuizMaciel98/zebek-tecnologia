@@ -1,0 +1,13 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>{{title}}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-list *ngFor="let page of relatedPages">
+        <ion-item button mode="ios" (click)="navigateToPage(page.link)">
+          <ion-label>{{page.name}}</ion-label>
+        </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>

@@ -1,10 +1,12 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonNavigationService } from '../../services/commonNavigation.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  providers: [CommonNavigationService]
 })
 export class HeaderComponent implements OnInit {
 
@@ -13,7 +15,7 @@ export class HeaderComponent implements OnInit {
 
   @ViewChild('productbtn', { read: ElementRef }) productbtn: ElementRef | any;
 
-  constructor(private router: Router,) { }
+  constructor(private router: Router, private commonNavigation: CommonNavigationService) { }
 
   ngOnInit() { }
 
@@ -34,14 +36,14 @@ export class HeaderComponent implements OnInit {
   }
 
   goToHomePage() {
-    this.router.navigate(['/home']);
+    this.commonNavigation.goToHomePage();
   }
   
   goToAboutPage() {
-    this.router.navigate(['/about']);
+    this.commonNavigation.goToAboutPage();
   }
   
   goToToolsPage() {
-    // this.router.navigate(['/Tools']);
+    this.commonNavigation.goToToolsPage();
   }
 }

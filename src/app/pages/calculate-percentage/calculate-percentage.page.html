@@ -19,17 +19,7 @@
             <app-initial-value-after-decrease></app-initial-value-after-decrease>
           </ion-col>
           <ion-col class="is-Desktop" size="4">
-            <ion-card>
-              <ion-card-header>
-                <ion-card-title>Calculadoras</ion-card-title>
-              </ion-card-header>
-            
-              <ion-card-content>
-                <ion-item button mode="ios">
-                  <ion-label>Calculadora porcentagem</ion-label>
-                </ion-item>
-              </ion-card-content>
-            </ion-card>
+            <app-side-menu [title]="sideMenuTitle" [relatedPages]="sideMenuRelatedPages"></app-side-menu>
           </ion-col>
         </ion-row>
       </ion-grid>

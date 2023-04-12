@@ -1,0 +1,20 @@
+.max-width-xl {
+    max-width: 1140px!important;
+    margin: auto;
+}
+
+@media(max-width: 768px) {
+    .is-Desktop {
+        display: none;
+    }
+
+    .mobile-button {
+        display: block;
+    }
+}
+
+@media(min-width: 768px) {
+    .mobile-button {
+        display: inline-block;
+    }
+}
