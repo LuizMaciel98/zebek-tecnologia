@@ -15,14 +15,69 @@
             
               <ion-card-content>
 
-                VALOR INICIAL
+                <ion-grid>
 
-                VALOR MENSAL
-  
-                TAXA DE JUROS 
-  
-                PERIODO EM 
+                  <ion-row>
 
+                    <ion-col>
+                      <ion-card class="card-margin">
+                        <ion-card-content>
+                          <ion-text>
+                            Valor inicial:
+                          </ion-text>
+                          <ion-text class="text-bold-right">
+                            {{formattedInitialValue}}
+                          </ion-text>
+                        </ion-card-content>
+                      </ion-card>
+                    </ion-col>
+
+                    <ion-col>
+                      <ion-card class="card-margin">
+                        <ion-card-content>
+                          <ion-text>
+                            Valor mensal:
+                          </ion-text>
+                          <ion-text class="text-bold-right">
+                            {{formattedMonthlyValue}}
+                          </ion-text>
+                        </ion-card-content>
+                      </ion-card>
+                    </ion-col>
+
+                  </ion-row>
+
+                  <ion-row>
+
+                    <ion-col>
+                      <ion-card class="card-margin">
+                        <ion-card-content>
+                          <ion-text>
+                            Taxa de juros:
+                          </ion-text>
+                          <ion-text class="text-bold-right">
+                            {{formattedInterest}}
+                          </ion-text>
+                        </ion-card-content>
+                      </ion-card>
+                    </ion-col>
+
+                    <ion-col>
+                      <ion-card class="card-margin">
+                        <ion-card-content>
+                          <ion-text>
+                            Período em:
+                          </ion-text>
+                          <ion-text class="text-bold-right">
+                            {{formattedPeriod}}
+                          </ion-text>
+                        </ion-card-content>
+                      </ion-card>
+                    </ion-col>
+
+                  </ion-row>
+
+                </ion-grid>
               </ion-card-content>
             </ion-card>
 
@@ -33,12 +88,51 @@
             
               <ion-card-content>
 
-                VALOR TOTAL FINAL
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size-sm="12" size-md="4">
+                      <ion-card class="card-margin">
+                        <ion-card-content class="align-center">
+                          <ion-text>
+                            Valor total final
+                          </ion-text>
+                          <br/>
+                          <ion-text class="text-bold">
+                            {{formattedTotalFinalValue}}
+                          </ion-text>
+                        </ion-card-content>
+                      </ion-card>
+                    </ion-col>
 
-                VALOR TOTAL INVESTIDO
-  
-                TOTAL EM JUROS
+                    <ion-col size-sm="12" size-md="4">
+                      <ion-card class="card-margin">
+                        <ion-card-content class="align-center">
+                          <ion-text>
+                            Valor total investido
+                          </ion-text>
+                          <br/>
+                          <ion-text class="text-bold">
+                            {{formattedInvestedValue}}
+                          </ion-text>
+                        </ion-card-content>
+                      </ion-card>
+                    </ion-col>
 
+                    <ion-col size-sm="12" size-md="4">
+                      <ion-card class="card-margin">
+                        <ion-card-content class="align-center">
+                          <ion-text>
+                            Total em juros
+                          </ion-text>
+                          <br/>
+                          <ion-text class="text-bold">
+                            {{formattedInterestFinalValue}}
+                          </ion-text>
+                        </ion-card-content>
+                      </ion-card>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
               </ion-card-content>
             </ion-card>
 
@@ -47,9 +141,19 @@
                 <ion-card-title>Gráfico e Tabelas</ion-card-title>
               </ion-card-header>
 
+
               <ion-card-content>
+
+                <canvas baseChart
+                  [data]="barChartData"
+                  [options]="barChartOptions"
+                  [plugins]="barChartPlugins"
+                  [legend]="barChartLegend"
+                  [type]="'bar'">
+                </canvas>
                 
-                GRAFICO E TABELAS
+                <!-- <canvas #barCanvas style="position: relative; height:20vh; width:40vw"></canvas> -->
+                <!-- GRAFICO E TABELAS -->
 
               </ion-card-content>
             </ion-card>

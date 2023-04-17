@@ -17,18 +17,18 @@
               <ion-card-content>
 
             
-                <form>
+                <form (ngSubmit)="calculate()" [formGroup]="compoundInterestCalculator">
                   <ion-row>
                     <ion-col>
                       <ion-item lines="full">
                         <ion-label position="floating">Valor Inicial</ion-label>
-                        <ion-input type="number" required></ion-input>
+                        <ion-input type="number" formControlName="initialValue" required></ion-input>
                       </ion-item>
                     </ion-col>
                     <ion-col>
                       <ion-item lines="full">
                         <ion-label position="floating">Valor Mensal (Opcional)</ion-label>
-                        <ion-input type="number"></ion-input>
+                        <ion-input type="number" formControlName="monthlyValue"></ion-input>
                       </ion-item>
                     </ion-col>
                   </ion-row>
@@ -37,17 +37,17 @@
                     <ion-col>
                       <ion-item lines="full">
                         <ion-label position="floating">Taxa de juros (%)</ion-label>
-                        <ion-input type="number"></ion-input>
+                        <ion-input type="number" formControlName="interestRate"></ion-input>
                       </ion-item>
                     </ion-col>
 
                     <ion-col>
                       <ion-item>
-                        <ion-label position="floating">Implicação dos juros:</ion-label>
-                        <ion-select interface="popover" value="annually">
+                        <ion-label position="floating">Intervalo dos juros:</ion-label>
+                        <ion-select interface="popover" value="annually" formControlName="interestRange" [(ngModel)]="interestRangeValue">
                           <ion-select-option value="annually">Anual</ion-select-option>
                           <ion-select-option value="monthly">Mensal</ion-select-option>
-                          <ion-select-option value="daily">Diario</ion-select-option>
+                          <!-- <ion-select-option value="daily">Diario</ion-select-option> -->
                         </ion-select>
                       </ion-item>
                     </ion-col>
@@ -57,23 +57,23 @@
                     <ion-col>
                       <ion-item lines="full">
                         <ion-label position="floating">Período em:</ion-label>
-                        <ion-input type="number"></ion-input>
+                        <ion-input type="number" formControlName="periodIn"></ion-input>
                       </ion-item>
                     </ion-col>
                     <ion-col>
                       <ion-item>
                         <ion-label position="floating">Intervalo:</ion-label>
-                        <ion-select interface="popover" placeholder="Período em..." value="years">
+                        <ion-select interface="popover" value="years" formControlName="interval" [(ngModel)]="intervalValue">
                           <ion-select-option value="years">Anos</ion-select-option>
                           <ion-select-option value="months">Meses</ion-select-option>
-                          <ion-select-option value="days">Dias</ion-select-option>
+                          <!-- <ion-select-option value="days">Dias</ion-select-option> -->
                         </ion-select>
                       </ion-item>
                     </ion-col>
                   </ion-row>
                   <ion-row>
                     <ion-col>
-                      <ion-button class="mobile-button" color="primary">Calcular</ion-button>
+                      <ion-button class="mobile-button" color="primary" type="submit" [disabled]="!compoundInterestCalculator.valid">Calcular</ion-button>
                       <ion-button class="mobile-button" fill="clear" color="medium">Limpar</ion-button>
                     </ion-col>
                   </ion-row>

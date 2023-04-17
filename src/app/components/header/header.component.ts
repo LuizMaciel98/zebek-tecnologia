@@ -3,47 +3,56 @@ import { Router } from '@angular/router';
 import { CommonNavigationService } from '../../services/commonNavigation.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
-  providers: [CommonNavigationService]
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    providers: [CommonNavigationService]
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() title: string = '';
-  dropdown = false;
+    @Input() title: string = '';
+    dropdown = false;
 
-  @ViewChild('productbtn', { read: ElementRef }) productbtn: ElementRef | any;
+    @ViewChild('productbtn', { read: ElementRef }) productbtn: ElementRef | any;
 
-  constructor(private router: Router, private commonNavigation: CommonNavigationService) { }
+    constructor(private router: Router, private commonNavigation: CommonNavigationService) { }
 
-  ngOnInit() { }
+    ngOnInit() { }
 
-  hideDropdown(event: any) {
-    const xTouch = event.clientX;
-    const yTouch = event.clientY;
+    hideDropdown(event: any) {
+        const xTouch = event.clientX;
+        const yTouch = event.clientY;
 
-    console.log('hideDropdown');
+        console.log('hideDropdown');
 
-    const rect = this.productbtn.nativeElement.getBoundingClientRect();
-    const topBoundary = rect.top+2;
-    const leftBoundary = rect.left+2;
-    const rightBoundary = rect.right-2;
+        const rect = this.productbtn.nativeElement.getBoundingClientRect();
+        const topBoundary = rect.top+2;
+        const leftBoundary = rect.left+2;
+        const rightBoundary = rect.right-2;
 
-    if (xTouch < leftBoundary || xTouch > rightBoundary || yTouch < topBoundary) {
-      this.dropdown = false;
+        if (xTouch < leftBoundary || xTouch > rightBoundary || yTouch < topBoundary) {
+        this.dropdown = false;
+        }
     }
-  }
 
-  goToHomePage() {
-    this.commonNavigation.goToHomePage();
-  }
-  
-  goToAboutPage() {
-    this.commonNavigation.goToAboutPage();
-  }
-  
-  goToToolsPage() {
-    this.commonNavigation.goToToolsPage();
-  }
+    get isMenuOpen() {
+        return true;
+    }
+
+    goToHomePage() {
+        this.commonNavigation.goToHomePage();
+    }
+    
+    goToAboutPage() {
+        this.commonNavigation.goToAboutPage();
+    }
+    
+    goToToolsPage() {
+        this.commonNavigation.goToToolsPage();
+    }
+    
+    goToBlogPage() {
+        this.commonNavigation.goToBlogPage();
+    }
+
 }

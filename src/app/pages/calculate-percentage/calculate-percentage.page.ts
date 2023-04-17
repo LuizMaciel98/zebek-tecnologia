@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 // import { FormBuilder, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -45,10 +45,14 @@ export class CalculatePercentagePage implements OnInit {
     title: string = 'Calculadora de Porcentagem';
 
     sideMenuTitle: string = 'Calculadoras';
+    
+    _commonNavigationService = inject(CommonNavigationService);
 
-    sideMenuRelatedPages: any = this.commonNavigation.getCalculatorsRelatedPages().pages;
+    sideMenuRelatedPages: any = this._commonNavigationService.getCalculatorsRelatedPages().pages;
 
-    constructor(private commonNavigation: CommonNavigationService) {
+
+    constructor() {
+        // this._commonNavigationService.setPageTitle(this.title + ' - Zebek Tecnologia');
     }
     
     ngOnInit() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -21,27 +21,29 @@ export class HomePage implements OnInit {
 
     title: string = 'Home Page';
 
+    _commonNavigationService = inject(CommonNavigationService);
+
     constructor(
         private router: Router, 
         private analyticsService: AnalyticsService, 
-        private commonNavigation: CommonNavigationService,
         public meta: Meta, 
         public metaTitle: Title) {}
 
     ngOnInit() {
+        // this._commonNavigationService.setPageTitle(this.title + ' - Zebek Tecnologia');
         // this.meta.updateTag({ property: 'og:description', content:  "description"});
     }
 
     goToCalculatePercentage() {
-        this.commonNavigation.goToCalculatePercentagePage();
+        this._commonNavigationService.goToCalculatePercentagePage();
     }
 
     goToCalculateRuleOfThree() {
-        this.commonNavigation.goToCalculateRuleOfThreePage();
+        this._commonNavigationService.goToCalculateRuleOfThreePage();
     }
 
     goToCalculateCompoundInterest() {
-        this.commonNavigation.goToCalculateCompoundInterest();
+        this._commonNavigationService.goToCalculateCompoundInterest();
     }
 
 }
