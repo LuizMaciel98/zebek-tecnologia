@@ -28,6 +28,7 @@
     "@capacitor/status-bar": "4.1.1",
     "@ionic-native/clipboard": "^5.36.0",
     "@ionic/angular": "^7.0.2",
+    "@swimlane/ngx-datatable": "^20.1.0",
     "chart.js": "^4.2.1",
     "copy-to-clipboard": "^3.3.3",
     "ionicons": "^7.0.0",

@@ -10,7 +10,7 @@
 
           <ion-card *ngFor="let blogPost of blogPosts" style="width: 100%;">
             <ion-card-header>
-              <ion-card-title button (click)="navigateToBlogPost(blogPost.urlPath)">{{blogPost.title}}</ion-card-title>
+              <ion-card-title class="blog-link" button="true" (click)="navigateToBlogPost(blogPost.urlPath)">{{blogPost.title}}</ion-card-title>
               <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
             </ion-card-header>
           

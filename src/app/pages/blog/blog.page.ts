@@ -38,6 +38,8 @@ export class BlogPage implements OnInit {
                 if(blogPostList.length > 0) {
 
                     blogPostList.forEach(blogPost => {
+
+                        blogPost.completeUrl = this.getCurrentPostPath(blogPost.urlPath);
                         
                         this.blogPosts.push(blogPost);
                     });
@@ -50,6 +52,10 @@ export class BlogPage implements OnInit {
 
     navigateToBlogPost(urlPath: string) {
         console.log(urlPath);
-        this._commonNavigationService.navigate('blog/post/' + urlPath);
+        this._commonNavigationService.navigate(this.getCurrentPostPath(urlPath));
+    }
+
+    getCurrentPostPath(urlPath: string) {
+        return 'blog/post/' + urlPath;
     }
 }

@@ -55,5 +55,12 @@
   <priority>0.4</priority>
 </url>
 
+<url>
+  <loc>https://zebek.dev/blog/post/website-dev-blog-02-escolhendo-a-arquitetura</loc>
+  <lastmod>2023-04-14</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.4</priority>
+</url>
+
 
 </urlset>

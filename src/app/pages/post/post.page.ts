@@ -57,6 +57,10 @@ export class PostPage implements OnInit {
                         this.blogPost = blogPost;
                         console.log(this.blogPost);
                         this._commonNavigationService.setPageTitle(this.blogPost.title + ' - Zebek Tecnologia');
+
+                        if (this.blogPost.metaDescription != null && this.blogPost.metaDescription != undefined) {
+                            this._commonNavigationService.updateMetaTag('description', this.blogPost.metaDescription);
+                        }
                     });
                 }
             }

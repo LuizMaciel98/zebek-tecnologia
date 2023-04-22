@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -7,8 +7,10 @@ import { SharedComponentsModule } from '../../components/shared-components.modul
 import { CommonNavigationService } from 'src/app/services/commonNavigation.service';
 
 import { Chart, ChartConfiguration } from 'chart.js';
-import { NgChartsModule } from 'ng2-charts';
+import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @Component({
     selector: 'app-result-compound-interest',
@@ -20,9 +22,11 @@ import { ActivatedRoute, Router } from '@angular/router';
         CommonModule, 
         FormsModule, 
         SharedComponentsModule, 
-        NgChartsModule
+        NgChartsModule,
+        NgxDatatableModule
     ],
-    providers: [CommonNavigationService]
+    providers: [CommonNavigationService],
+    // encapsulation: ViewEncapsulation.None
 })
 export class ResultCompoundInterestPage implements OnInit {
 
@@ -42,30 +46,29 @@ export class ResultCompoundInterestPage implements OnInit {
     investedFinalValue: number | any;
     interestFinalValue: number | any;
 
+    showGraphic = true;
+    showTable = false;
+
     barChart: any;
+    // @ViewChild('barCanvas') private barCanvas: ElementRef | any;
+
+    @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
+    public columns: any = [
+        {prop: 'Mês'},
+        {prop: 'Juros'},
+        {prop: 'Total Investido'},
+        {prop: 'Total de Juros'},
+        {prop: 'Valor Total'},
+    ];
+
+    public rows: any = [];
+    monthDetailResult: MonthDetail[] = [];
 
     constructor(private commonNavigation: CommonNavigationService, private route: ActivatedRoute) {
     }
 
     ngOnInit() {
-
-        // try{
-        //     document.querySelector("meta[name='description']").remove();
-        //   } catch (e){
-      
-        //   }
-        //   try{
-        //     document.querySelector("meta[name='keywords']").remove();
-        //   } catch (e){
-      
-        //   }
-      
-        //   // Add the new META-Tags
-        //   var description = document.createElement('meta');
-        //   description.name = "description";
-        //   description.content = "Weeklystyle - Die neueste Mode, Musik und Events. Täglich aktualisierte Daten und ausgesuchte Produkte. Viel Spass beim stöbern und träumen.";
-        //   document.getElementsByTagName('head')[0].appendChild(description);
-
         const queryParams: any = this.route.snapshot.queryParamMap.get('queryParams');
 
         this.initialValue   = Number(this.route.snapshot.queryParamMap.get('initialValue'));
@@ -83,7 +86,15 @@ export class ResultCompoundInterestPage implements OnInit {
     }
 
     ngAfterViewInit () {
-        this.barChartMethod();
+        // this.barChartMethod();
+    }
+
+    get isGraphicOpen() {
+        return this.showGraphic;
+    }
+
+    get isTableOpen() {
+        return this.showTable;
     }
 
     get formattedInitialValue() {
@@ -136,6 +147,8 @@ export class ResultCompoundInterestPage implements OnInit {
         this.totalFinalValue = 0;
         this.investedFinalValue = 0;
         this.interestFinalValue = 0;
+
+        console.log(this.interval);
       
         switch(this.interval) {
           case 'years':
@@ -181,6 +194,30 @@ export class ResultCompoundInterestPage implements OnInit {
 
         console.log(result);
 
+        result.forEach(row => {
+            let month = row.month;
+            let interest = row.interest.toFixed(2);
+            let totalInvested = row.totalInvested.toFixed(2);
+            let totalInterest = row.totalInterest.toFixed(2);
+            let totalValue = row.totalValue.toFixed(2);
+
+            this.rows.push(
+                {
+                    "Mês": month,
+                    "Juros": interest,
+                    "Total Investido": totalInvested,
+                    "Total de Juros": totalInterest,
+                    "Valor Total": totalValue
+                }
+            );
+        });
+
+        console.log(this.rows);
+
+        this.monthDetailResult = result;
+
+        
+        this.barChartMethod();
     }
 
     calculateAnualCompoundInterest(initialValue: number, anualTax: number) {
@@ -194,30 +231,118 @@ export class ResultCompoundInterestPage implements OnInit {
         return calculatedValue;
     }
 
+    segmentChange(event: any) {
+        console.log(event.detail.value);
 
-    barChartMethod() {
+        if (event.detail.value == 'table') {
+            this.showGraphic = false;
+            this.showTable = true;
+        } else {
+            this.showGraphic = true;
+            this.showTable = false;
+        }
+        
+    }
 
+
+    async barChartMethod() {
+        // if (this.barChart == null) {
+
+        //     console.log();
+
+        //     this.barChart = new Chart(this.barCanvas.nativeElement, {
+        //         type: 'bar',
+        //         data: {
+        //         labels: this.getChartLabels(),
+        //         datasets: this.getChartDataSets()
+        //         },
+        //         options: {
+        //             scales: {
+        //                 y: {
+        //                     ticks: {
+        //                         callback: function(value, index, ticks) {
+        //                             return 'R$' + value;
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     });
+        // }
+
+        console.log(this.barChartData.labels);
+        console.log(JSON.stringify(this.barChartData.datasets));
+
+        await this.barChartData.labels?.pop();
+        await this.barChartData.datasets?.pop();
+
+        // let labels = [];
+
+        // array.forEach(element => {
+            
+        // });
+
+        console.log(this.barChartData.labels);
+        console.log(this.barChartData.datasets);
+        
+        this.barChartData.labels = this.getChartLabels();
+        this.barChartData.datasets = this.getChartDataSets();
+
+        console.log(this.barChartData.labels);
+        console.log(JSON.stringify(this.barChartData.datasets));
+        
+        
+        this.chart?.update();
+    }
+
+    getChartLabels() {
+        let result: any = [];
+
+        this.monthDetailResult.forEach((month:any) => {
+            result.push(month.month);
+        });
+
+        return result;
+    }
+
+    getChartDataSets() {
+        let result: any = [];
+
+        let interestArray: any = [];
+        let totalInvestedArray: any = [];
+
+        this.monthDetailResult.forEach((month:any) => {
+            interestArray.push(month.totalInterest);
+            totalInvestedArray.push(month.totalInvested);
+        });
+        
+        result = [
+            { data: totalInvestedArray, label: 'Valor investido' },
+            { data: interestArray, label: 'Total em juros' }
+        ];
+
+        return result;
     }
 
     public barChartLegend = true;
     public barChartPlugins = [];
 
     public barChartData: ChartConfiguration<'bar'>['data'] = {
-        labels: [ '2006', '2007', '2008', '2009', '2010', '2011', '2012' ],
+        labels: [ '00', '01' ], //meses
         datasets: [
-        { data: [ 65, 59, 80, 81, 56, 55, 40 ], label: 'Valor investido' },
-        { data: [ 28, 48, 40, 19, 86, 27, 90 ], label: 'Total em juros' }
+            { data: [ 15000, 15125 ], label: 'Valor investido' },
+            { data: [ 0, 520 ], label: 'Total em juros' }
         ]
     };
 
     public barChartOptions: ChartConfiguration<'bar'>['options'] = {
-        responsive: false,
+        responsive: true,
     };
 
 }
 
 class MonthDetail {
-    month: number = 0;
+    month: any = 0;
     interest: number = 0;
     totalInvested: number = 0;
     totalInterest: number = 0;

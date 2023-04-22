@@ -144,7 +144,17 @@
 
               <ion-card-content>
 
-                <canvas baseChart
+                <ion-segment value="graphic" (ionChange)="segmentChange($event)">
+                  <ion-segment-button value="graphic">
+                    <ion-label>Gráfico</ion-label>
+                  </ion-segment-button>
+                  <ion-segment-button value="table">
+                    <ion-label>Tabela</ion-label>
+                  </ion-segment-button>
+                </ion-segment>
+
+
+                <canvas *ngIf="isGraphicOpen" baseChart class="chart"
                   [data]="barChartData"
                   [options]="barChartOptions"
                   [plugins]="barChartPlugins"
@@ -154,6 +164,12 @@
                 
                 <!-- <canvas #barCanvas style="position: relative; height:20vh; width:40vw"></canvas> -->
                 <!-- GRAFICO E TABELAS -->
+                
+                
+                <ngx-datatable *ngIf="isTableOpen"
+                  [rows]="rows" 
+                  [columns]="columns">
+                </ngx-datatable>
 
               </ion-card-content>
             </ion-card>

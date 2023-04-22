@@ -38,6 +38,11 @@ export class CalculateCompoundInterestPage implements OnInit {
     }
 
     ngOnInit() {
+
+        const url = location.href.replace(location.origin, '');
+        console.log(url);
+        this.router.navigateByUrl(url);
+
         this.compoundInterestCalculator = this.fb.group({
             initialValue:   ['', [Validators.required]],
             monthlyValue:   ['', []],

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 
 const HOME_PATH = '/home';
 const ABOUT_PATH = '/sobre';
@@ -30,7 +30,7 @@ const CALCULATORS_RELATED_PAGES = {
 @Injectable()
 export class CommonNavigationService {
 
-    constructor(private router: Router, private titleService: Title) {}
+    constructor(private router: Router, public meta: Meta, private titleService: Title) {}
 
     goToHomePage() {
         this.navigate(HOME_PATH);
@@ -70,6 +70,10 @@ export class CommonNavigationService {
 
     setPageTitle(title: string) {
         this.titleService.setTitle(title);
+    }
+
+    updateMetaTag(metaName: string, metaContent: string) {
+        this.meta.updateTag({ name: metaName, content: metaContent});
     }
 
 }
