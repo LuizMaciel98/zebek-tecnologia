@@ -14,6 +14,7 @@ export const routes: Routes = [
         data: {
             title: 'Calculadora de Porcentagem - Zebek Tecnologia',
             description: 'Calcule porcentagens com facilidade usando nossa calculadora online. Não importa se você precisa calcular a porcentagem de um valor ou a porcentagem entre dois valores, nossa ferramenta é simples de usar e eficiente. Além disso, você pode verificar o passo a passo de cálculo e obter a fórmula do Excel ou Google Sheets do cálculo para entender como chegamos ao resultado. Se você está acostumado a calcular porcentagens no Excel, vai adorar a nossa calculadora, que faz todo o trabalho por você. Descubra como calcular porcentagem de aumento e de lucro com rapidez e precisão. Faça cálculos de porcentagem com confiança usando a nossa calculadora de porcentagem online gratuita.',
+            keywords: 'Zebek Tecnologia, Calculadora de Porcentagem, Calculo de porcentagem online, Luiz Maciel'
         },
         loadComponent: () => import('./pages/calculate-percentage/calculate-percentage.page').then( m => m.CalculatePercentagePage)
     },
@@ -29,7 +30,7 @@ export const routes: Routes = [
         path: 'ferramentas',
         data: {
             title: 'Ferramentas - Zebek Tecnologia',
-            description: 'Encontre todas as ferramentas que precisa para tornar suas tarefas intelectuais mais eficientes em um só lugar. Nossa página de ferramentas oferece uma ampla variedade de opções para simplificar suas tarefas diárias, desde calculadoras e conversores de imagem até conversores de formato de texto. Economize tempo e esforço com nossas ferramentas intuitivas e precisas, projetadas para atender às suas necessidades específicas. Acesse agora e descubra como nossas ferramentas podem ajudar a melhorar sua produtividade.'
+            description: 'Encontre todas as ferramentas que precisa para tornar suas tarefas intelectuais mais eficientes em um só lugar. Nossa página de ferramentas oferece uma ampla variedade de opções para simplificar suas tarefas diárias, desde calculadoras e conversores de imagem até conversores de formato de texto. Economize tempo e esforço com nossas ferramentas intuitivas e precisas, projetadas para atender às suas necessidades específicas. Acesse agora e descubra como nossas ferramentas podem ajudar a melhorar sua produtividade.',
         },
         loadComponent: () => import('./pages/tools/tools.page').then( m => m.ToolsPage)
     },
@@ -38,6 +39,7 @@ export const routes: Routes = [
         data: {
             title: 'Calculadora de Regra de Tres - Zebek Tecnologia',
             description: 'Calcule de forma fácil e rápida a regra de três com nossa calculadora online. Descubra como fazer regra de três simples ou composta e verifique a porcentagem em segundos. Além disso, você pode usar nossa calculadora para resolver problemas de regra de três inversamente proporcional e até mesmo descobrir como fazer a regra de três no Excel. Simplifique seus cálculos e economize tempo com nossa calculadora de regra de três. Experimente agora mesmo!',
+            keywords: 'Zebek Tecnologia, Regra de três, Regra de três online, Calcular Regra de Três, Luiz Maciel'
         },
         loadComponent: () => import('./pages/calculate-rule-of-three/calculate-rule-of-three.page').then( m => m.CalculateRuleOfThreePage)
     },
@@ -46,6 +48,7 @@ export const routes: Routes = [
         data: {
             title: 'Calculadora de Juros Compostos - Zebek Tecnologia',
             description: 'Calcule seus juros compostos com facilidade e precisão usando nossa calculadora financeira online. Descubra seus rendimentos com aportes mensais e compare com os juros simples. Com nossa calculadora, você pode planejar seu futuro financeiro com mais segurança e tomar decisões informadas. Experimente agora e descubra como nossas ferramentas podem ajudá-lo a alcançar seus objetivos financeiros!',
+            keywords: 'Zebek Tecnologia, Calculadora de Juros Compostos, Calculo de juros compostos online, Luiz Maciel'
         },
         loadComponent: () => import('./pages/calculate-compound-interest/calculate-compound-interest.page').then( m => m.CalculateCompoundInterestPage)
     },
@@ -73,6 +76,8 @@ export const routes: Routes = [
         path: 'link-tree',
         data: {
             title: 'Link Tree - Zebek Tecnologia',
+            description: 'Link tree construído do zero em Ionic Angular e hospedado no Firebase hosting.',
+            keywords: 'Luiz Maciel, Link Tree, Luiz Maciel Segura dos Santos, Linkedin, Github'
         },
         loadComponent: () => import('./pages/link-tree/link-tree.page').then( m => m.LinkTreePage)
     },

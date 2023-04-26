@@ -41,13 +41,23 @@ export class AppComponent {
         .subscribe((event: any) => {
             const dynamicTitle = event.snapshot.data.title;
             const dynamicDescription = event.snapshot.data.description;
+            const keywords = event.snapshot.data.keywords;
             if (dynamicTitle != null && dynamicTitle != undefined) {
                 this.title.setTitle(`${dynamicTitle}`);
+                this.meta.updateTag({ property: 'og:title', content:  dynamicTitle});
             }
 
             if (dynamicDescription != null && dynamicDescription != undefined) {
                 this.meta.updateTag({ name: 'description', content:  dynamicDescription});
+                this.meta.updateTag({ property: 'og:description', content:  dynamicDescription});
             }
+            
+            if (keywords != null && keywords != undefined) {
+                this.meta.updateTag({ name: 'keywords', content:  keywords});
+            }
+            
+            this.meta.updateTag({ property: 'og:locale', content:  'pt_BR'});
+            this.meta.updateTag({ property: 'og:type', content:  'website'});
         });
     }
 }

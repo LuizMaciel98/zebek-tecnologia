@@ -79,10 +79,6 @@ export class ResultCompoundInterestPage implements OnInit {
         this.interval       = this.route.snapshot.queryParamMap.get('interval');
 
         this.calculateResult();
-
-        console.log('totalFinalValue: ' + this.totalFinalValue); 
-        console.log('investedFinalValue: ' + this.investedFinalValue); 
-        console.log('interestFinalValue: ' + this.interestFinalValue); 
     }
 
     ngAfterViewInit () {
@@ -147,8 +143,6 @@ export class ResultCompoundInterestPage implements OnInit {
         this.totalFinalValue = 0;
         this.investedFinalValue = 0;
         this.interestFinalValue = 0;
-
-        console.log(this.interval);
       
         switch(this.interval) {
           case 'years':
@@ -246,51 +240,12 @@ export class ResultCompoundInterestPage implements OnInit {
 
 
     async barChartMethod() {
-        // if (this.barChart == null) {
-
-        //     console.log();
-
-        //     this.barChart = new Chart(this.barCanvas.nativeElement, {
-        //         type: 'bar',
-        //         data: {
-        //         labels: this.getChartLabels(),
-        //         datasets: this.getChartDataSets()
-        //         },
-        //         options: {
-        //             scales: {
-        //                 y: {
-        //                     ticks: {
-        //                         callback: function(value, index, ticks) {
-        //                             return 'R$' + value;
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     });
-        // }
-
-        console.log(this.barChartData.labels);
-        console.log(JSON.stringify(this.barChartData.datasets));
 
         await this.barChartData.labels?.pop();
         await this.barChartData.datasets?.pop();
-
-        // let labels = [];
-
-        // array.forEach(element => {
-            
-        // });
-
-        console.log(this.barChartData.labels);
-        console.log(this.barChartData.datasets);
         
         this.barChartData.labels = this.getChartLabels();
         this.barChartData.datasets = this.getChartDataSets();
-
-        console.log(this.barChartData.labels);
-        console.log(JSON.stringify(this.barChartData.datasets));
-        
         
         this.chart?.update();
     }
